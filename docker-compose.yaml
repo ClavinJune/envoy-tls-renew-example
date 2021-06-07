@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  envoy:
+    image: envoyproxy/envoy:v1.18.3
+    command:
+      - '--drain-time-s 1'
+      - '-l debug'
+      - '-c /tmp/bootstrap.yaml'
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./:/tmp:ro
